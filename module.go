@@ -102,6 +102,10 @@ func getServer(_, addr string) (*tsnet.Server, error) {
 			},
 		}
 
+		if os.Getenv("TS_LOGIN_SERVER") != "" {
+			s.ControlURL = os.Getenv("TS_LOGIN_SERVER")
+		}
+
 		if host != "" {
 			// Set authkey to "TS_AUTHKEY_<HOST>".  If empty,
 			// fall back to "TS_AUTHKEY".
