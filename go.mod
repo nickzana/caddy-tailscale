@@ -1,4 +1,4 @@
-module github.com/tailscale/caddy-tailscale
+module git.nickzana.dev/nick/caddy-tailscale
 
 go 1.19
 
@@ -174,3 +174,5 @@ require (
 	inet.af/peercred v0.0.0-20210906144145-0893ea02156a // indirect
 	nhooyr.io/websocket v1.8.7 // indirect
 )
+
+replace github.com/tailscale/caddy-tailscale => git.nickzana.dev/nick/caddy-tailscale v0.1.0
