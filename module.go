@@ -102,6 +102,8 @@ func getServer(_, addr string) (*tsnet.Server, error) {
 			},
 		}
 
+		s.Ephemeral = true
+
 		if os.Getenv("TS_LOGIN_SERVER") != "" {
 			s.ControlURL = os.Getenv("TS_LOGIN_SERVER")
 		}
