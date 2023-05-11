@@ -111,7 +111,7 @@ func getServer(_, addr string) (*tsnet.Server, error) {
 		if host != "" {
 			// Set authkey to "TS_AUTHKEY_<HOST>".  If empty,
 			// fall back to "TS_AUTHKEY".
-			s.AuthKey = os.Getenv("TS_AUTHKEY_" + strings.ToUpper(host))
+			s.AuthKey = os.Getenv("TS_AUTHKEY_" + strings.Replace(strings.ToUpper(host), "-", "_", -1))
 			if s.AuthKey == "" {
 				s.AuthKey = os.Getenv("TS_AUTHKEY")
 			}
