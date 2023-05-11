@@ -111,10 +111,14 @@ func getServer(_, addr string) (*tsnet.Server, error) {
 		if host != "" {
 			// Set authkey to "TS_AUTHKEY_<HOST>".  If empty,
 			// fall back to "TS_AUTHKEY".
-			s.AuthKey = os.Getenv("TS_AUTHKEY_" + strings.Replace(strings.ToUpper(host), "-", "_", -1))
+			hostKey := strings.Replace(strings.ToUpper(host), "-", "_", -1)
+			s.Logf("hostKey is: %s", hostKey)
+			
+			s.AuthKey = os.Getenv("TS_AUTHKEY_" + hostKey)
 			if s.AuthKey == "" {
 				s.AuthKey = os.Getenv("TS_AUTHKEY")
 			}
+
 
 			// Set config directory for tsnet.  By default, tsnet will use the name of the
 			// running program, but we include the hostname as well so that a single
